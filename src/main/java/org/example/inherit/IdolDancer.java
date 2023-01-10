@@ -1,8 +1,11 @@
 package org.example.inherit;
 
 import org.example.basic.Dancer;
+import org.example.basic.Rapper;
+import org.example.basic.Singer;
 
-public class IdolDancer extends Dancer {        // 상속 - 객체를 2개 만들어 연결하는 역할
+public class IdolDancer extends Dancer      // 상속 - 객체를 2개 만들어 연결하는 역할
+        implements Singer, Rapper {        //  다중상속이 불가능하므로 interface 로 (interface 는 여러개 사용 가능)
     private int numberOfFan;        // 팬의 수
 
     // 생성자를 하나도 선언하지 않으면 기본 생성자가 자동으로 만들어짐 (하나라도 생성하면 기본 생성자는 안만들어짐)
@@ -22,11 +25,26 @@ public class IdolDancer extends Dancer {        // 상속 - 객체를 2개 만�
     // - 부모의 메서드 시그니처(이름, 리턴타입, 파라미터)를 똑같이 맞춰야 함
     @Override       // @Override : 시그니처를 실수하지 않고 똑같이 맞췄는지 확인해줌 (안전한 코드)
     public void dance() {
-        super.dance();
+//        super.dance();
         wink();
     }
 
+//    public void idolDance() {
+//        super.dance();
+//        wink();
+//    }
+
     private void wink() {           // IdolDancer 의 단독 기능
         System.out.println("아이돌댄서만 윙크 합니다.");
+    }
+
+    @Override
+    public void sing() {
+
+    }
+
+    @Override
+    public void rap() {
+
     }
 }

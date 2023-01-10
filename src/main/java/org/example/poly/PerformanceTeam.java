@@ -19,4 +19,11 @@ public class PerformanceTeam {
         System.out.println(dancer.getMyName() + "님이 팀에 가입했습니다.");
         System.out.println("현재 팀원 수:  " + dancers.size() + "명");
     }
+
+    // 군무연습
+    public void groupDance() {
+        for (Dancer dancer : dancers) {     // iter 단축키
+            dancer.dance();
+        }
+    }
 }

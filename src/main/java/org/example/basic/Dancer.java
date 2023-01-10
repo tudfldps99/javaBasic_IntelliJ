@@ -2,7 +2,8 @@ package org.example.basic;
 
 import static org.example.basic.DanceLevel.*;
 
-public class Dancer extends Object{     // 상속(extends)이 이루어지지 않을때는 자동으로 extends Object 가 붙음 ==> 자바의 최상위 클래스는 Object 클래스임을 알 수 있음
+public abstract class Dancer extends Object{     // 상속(extends)이 이루어지지 않을때는 자동으로 extends Object 가 붙음 ==> 자바의 최상위 클래스는 Object 클래스임을 알 수 있음
+    // abstract : 추상화
 
     private final String crewName;        // 팀의 이름      ( final :  필수 불변값 -- 초기화 필요 : 생성자로도 OK )
     private final String myName;          // 내 이름
@@ -55,18 +56,21 @@ public class Dancer extends Object{     // 상속(extends)이 이루어지지 �
     }
 
     // 춤추기
-    public void dance() {
+//    public void dance() {
+//
+//        // 캡슐화
+//        stretch();
+//        makeFlexible();
+//
+//        if (!flexible) {
+//            System.out.println("유연성 운동 안해서 죽었습니다.");
+//            return;
+//        }
+//        System.out.println(myName + "님이 춤을 춥니다.");
+//    }
 
-        // 캡슐화
-        stretch();
-        makeFlexible();
-
-        if (!flexible) {
-            System.out.println("유연성 운동 안해서 죽었습니다.");
-            return;
-        }
-        System.out.println(myName + "님이 춤을 춥니다.");
-    }
+    // 추상화
+    public abstract void dance();
 
     public String getCrewName() {
         return crewName;
