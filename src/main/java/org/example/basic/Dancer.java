@@ -67,4 +67,12 @@ public class Dancer extends Object{     // 상속(extends)이 이루어지지 �
         }
         System.out.println(myName + "님이 춤을 춥니다.");
     }
+
+    public String getCrewName() {
+        return crewName;
+    }
+
+    public String getMyName() {
+        return myName;
+    }
 }
