@@ -1,7 +1,11 @@
 package org.example;
 
+import org.example.basic.Dancer;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("안녕하세요!");
+        Dancer dancer = new Dancer("총알탄소년단", "춤신춤왕");           // Ctrl + Alt + v
+
+        dancer.dance();
     }
 }
