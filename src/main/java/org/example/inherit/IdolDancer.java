@@ -1,3 +1,4 @@
+//2023-01-10
 package org.example.inherit;
 
 import org.example.basic.Dancer;
@@ -6,6 +7,7 @@ import org.example.basic.Singer;
 
 public class IdolDancer extends Dancer      // 상속 - 객체를 2개 만들어 연결하는 역할
         implements Singer, Rapper {        //  다중상속이 불가능하므로 interface 로 (interface 는 여러개 사용 가능)
+
     private int numberOfFan;        // 팬의 수
 
     // 생성자를 하나도 선언하지 않으면 기본 생성자가 자동으로 만들어짐 (하나라도 생성하면 기본 생성자는 안만들어짐)

@@ -1,3 +1,4 @@
+//2023-01-10
 package org.example.basic;
 
 public interface Singer {       // interface 로 쓰면 밑의 코드에 public abstract 가 자동화됨.
