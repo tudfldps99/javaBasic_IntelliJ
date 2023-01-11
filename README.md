@@ -4,6 +4,17 @@
 * JDK 11
 * `./gradlew build` 로 빌드 실행
 ----
+<단축키>
+- Ctrl + Alt + v : 변수 추출하기
+- sout : System.out.println()
+- soutv :  system.out.println("변수" + 변수);
+- Ctrl + E : 최근 실행 파일
+- Alt + Enter : 오류 수정, 인텐션 액션, 검사
+- Ctrl + D : 라인 복제
+- Ctrl + Shift + ↑ : 코드 한 줄 혹은 선택 영역을 한 줄 위로 이동
+  Ctrl + Shift + ↓ : 코드 한 줄 혹은 선택 영역을 한 줄 아래로 이동
+  iter : enhanced for
+----
 1. 플러그인 설치
 - file -> settings
 - 왼쪽 plugins 선택

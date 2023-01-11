@@ -9,7 +9,7 @@ import static java.util.Comparator.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {        // main 단축키
         
         List<Integer> numbs = List.of(9,4,3,2,3,6,7);
         List<String> str = List.of("apple", "banana", "홍길동");
