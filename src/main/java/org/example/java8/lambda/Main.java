@@ -1,6 +1,8 @@
 //2023-01-11
 package org.example.java8.lambda;
 
+import lombok.*;
+
 import java.util.List;
 
 public class Main {
@@ -89,7 +91,7 @@ public class Main {
         System.out.println();
 
         System.out.println("=== 제너릭 필터 메서드 ===");
-        List<Apple> GenericAppleLists =   FilteringApple.filter(appleList, a -> a.getColor() == Color.RED);     // 빨간사과만 필터링
+        List<Apple> GenericAppleLists =   FilteringApple.filterGeneric(appleList, a -> a.getColor() == Color.RED);     // 빨간사과만 필터링
         // 20번째 줄에서 List<Apple> 로 작성해줬기 때문에 GenericPredicate 의 <T>에는 <Apple>이 들어감
         for (Apple GenericAppleList : GenericAppleLists) {
             System.out.println(GenericAppleList);
@@ -100,7 +102,57 @@ public class Main {
         List<Integer> numbers = List.of(
                 1,2,3,4,5,6,7,8,9,10
         );
-        List<Integer> evenNumbers = FilteringApple.filter(numbers, n-> n % 2 == 0);     // 짝수만 필터링
+        List<Integer> evenNumbers = FilteringApple.filterGeneric(numbers, n-> n % 2 == 0);     // 짝수만 필터링
+        System.out.println("=== 짝수만 필터링 ===");
         System.out.println(evenNumbers);
+
+        System.out.println();
+
+        System.out.println("=== 변경 메서드 ===");
+        // 사과 리스트에서 사과의 색상만 추출하여 새로운 색상리스트를 반환
+        // <T> : Apple, <R> : Color
+//        List<Color> colorList =  FilteringApple.map(appleList, apple -> apple.getColor());     // 색상만 모두 추출
+//        System.out.println("colorList = " + colorList);
+
+        List<Color> colorList =  FilteringApple.map(appleList, Apple::getColor);     // 색상만 모두 추출           apple -> apple.getColor() : Apple.getColor
+        System.out.println("colorList = " + colorList);
+
+        List<Integer> weightList =  FilteringApple.map(appleList, Apple::getWeight);     // 무게만 모두 추출
+        System.out.println("weightList = " + weightList);
+
+//        List<AppleInfo> appleInfos = FilteringApple.map(appleList, a -> new AppleInfo(a.getColor(), a.getWeight()));    // 색상, 무게 모두 추출
+//        System.out.println("appleInfos = " + appleInfos);
+        List<AppleInfo> appleInfos = FilteringApple.map(appleList, AppleInfo::new);    // 색상, 무게 모두 추출
+        System.out.println("appleInfos = " + appleInfos);
+
+        // 전체 사과 색 변경
+        // <T> : Apple, <R> : Apple
+        List<Apple> yellows = FilteringApple.map(appleList, a -> {
+            a.setColor(Color.YELLOW);
+            return a;
+        });
+        for (Apple yellow : yellows) {
+            System.out.println(yellow);
+        }
+    }
+    
+    // 사과에서 필요한 데이터 몇개만 추출
+    @Getter @NoArgsConstructor @ToString @AllArgsConstructor
+    public static class AppleInfo {
+        private Color color;
+        private int weight;
+
+        public AppleInfo(Apple a) {
+            this.color = a.getColor();
+            this.weight = a.getWeight();
+        }
+
+        /*
+            //@AllArgsConstructor 대신 사용
+            public AppleInfo(Color color, int weight) {
+                this.color = color;
+                this.weight = weight;
+            }
+         */
     }
 }

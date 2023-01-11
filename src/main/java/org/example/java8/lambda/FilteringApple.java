@@ -59,7 +59,7 @@ public class FilteringApple {
     /*
      * @solution - try4 : 제네릭(Generic) 필터 메서드 생성
      */
-    public static <T> List<T> filter(List<T> inventory, GenericPredicate<T> p) {       // 인터페이스를 구현한 객체를 전달
+    public static <T> List<T> filterGeneric(List<T> inventory, GenericPredicate<T> p) {       // 인터페이스를 구현한 객체를 전달
 
         List<T> result = new ArrayList<>();
         for (T t : inventory) {
@@ -69,4 +69,25 @@ public class FilteringApple {
         }
         return result;
     }
+
+    /*
+     * 리스트와 변경조건을 전달하면 리스트 내부의 값을 변경조건에 따라 변환한 뒤 반환하는 map 이라는 메서드를 구현
+     *
+     * ex) map(appleList, apple -> apple.setColor(RED))
+     *
+     * => 리스트 안의 모든 사과가 빨간색으로 변해야 한다
+    */
+
+    // 들어오는 타입(T)와 나가는 타입(R)이 다름
+    public static <T, R> List<R> map(List<T> list, GenericFunction<T, R> mapper) {
+
+        List<R> result = new ArrayList<>();
+        for (T t : list) {
+            R r = mapper.apply(t);
+            result.add(r);
+        }
+        return result;
+    }
+
+
 }

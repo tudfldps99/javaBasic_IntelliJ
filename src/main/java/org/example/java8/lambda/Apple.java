@@ -9,10 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Apple {
-
     private int weight;     // 무게
     private Color color;    // 색상
-
-
-
 }
