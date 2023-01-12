@@ -36,7 +36,7 @@ public class Main {
         // List<String>
         // 거래 목록에서 거래자들을 추출한 후에 거래자 안에 있는 도시 이름을 추출
         // filter : 10개 중에 조건에 맞는 3개를 필터링
-        // map : 10개 중에 10개를 가졍는데 조건에 맞게 추출
+        // map : 10개 중에 10개를 가정하는데 조건에 맞게 추출
         List<String> cities = transactions.stream()
                 .map(transaction -> transaction.getTrader().getCity())
                 .distinct()
