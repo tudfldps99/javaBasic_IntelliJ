@@ -3,6 +3,7 @@ package org.example.java8.stream.practice;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -66,5 +67,39 @@ public class Main {
                 .distinct()
                 .collect(Collectors.toList());
         System.out.println("names = " + names);
+
+
+// 2023-01-12
+        System.out.println();
+
+        // 연습 5: Milan 에 거주하는 거래자가 한명이라도 있는지 여부 확인?
+        boolean milanBased = transactions.stream()
+                .anyMatch(transaction -> transaction.getTrader().getCity().equalsIgnoreCase("Milan"));  // equalsIgnoreCase : 대,소문자 상관없이 동일여부 확인
+        System.out.println("milanBased = " + milanBased);
+
+        System.out.println();
+
+        // 연습 6: Cambridge 에 사는 거래자의 모든 거래액의 총합 출력.
+        int totalTransactionValue = transactions.stream()
+                .filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                .mapToInt(Transaction::getValue)
+                .sum();
+        System.out.println("totalTransactionValue = " + totalTransactionValue);
+
+        System.out.println();
+
+        // 연습 7: 모든 거래에서 최고거래액은 얼마인가?
+        int maxValue = transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .max()
+                .getAsInt();
+        System.out.println("maxValue = " + maxValue);
+
+        System.out.println();
+
+        // 연습 8: 가장 작은 거래액을 가진 거래정보 탐색
+        Optional<Transaction> smallestTransaction = transactions.stream()
+                .min(Comparator.comparing(Transaction::getValue));
+        smallestTransaction.ifPresent(System.out::println);
     }
 }
